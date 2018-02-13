@@ -1,0 +1,202 @@
+Title,Labels,Type,Description,URL
+MP Progress Dashboard - screen does not scroll all the way and gets stuck when using arrow,"5.5.0 bug, 5.5.1, md, mp progress dashboard, release notes, requestor: pnc, validated by developer",bug,"When on MP Progress Dashboard 
+and select Wave
+and click the heather
+then the screen does not scroll all the way 
+and gets stuck when using arrow.
+*ENDSTORY*
+
+**steps to reproduce**
+1. Navigate to MP Progress dashboard
+2. select a wave and click apply (P5W2 used in example)
+3. click on the header area and arrow down to scroll
+
+**expected outcome** able to scroll up and down the screen
+**actual outcome**
+1. only partially scrolls
+2. screen gets stuck
+3. have to click in the chart area below the headers or use the scroll bar on the right to be able to move again
+
+dev and QA
+https://i.gyazo.com/518e0cbf2d9b913501036f3b4eaf7118.gif
+",https://www.pivotaltracker.com/story/show/154574328
+"Activities dashboard - left click on ""wave name"" navigates to an empty Wave dashboard","5.5.1, activity dashboard, release notes, reproduced in dev, requestor:pnc, validated by developer, verified by qa - pass",bug,"When on Activities dashboard
+and hover over a ""wave name"" in Wave column
+(user is presented with message ""Click to go to ""wave name"" dashboard page. Ctrl-and click to open it in a new tab"")
+then MD navigates to Wave Dashboard
+and Wave Dashboard filter populate except for Asset Type filter 
+and there are no results.
+*ENDSTORY* 
+
+**expected outcome** - opens a wave dashboard filtered to that that wave
+**actual outcome** - opens an empty wave dashboard
+
+https://gyazo.com/4b42f40139cac90ec3d92f5f0c869968",https://www.pivotaltracker.com/story/show/154696597
+Activity Dashboard - Multiple assignees overlap,"5.5.1, release notes, validated by developer, verified by qa - pass",bug,"When on Activity Dashboard
+and Activity has multiple Assignees
+the names overlap
+while expected to All show when hoovering over.
+*ENDSTORY*
+
+AC
+at the RE is limited, make them display open hover over",https://www.pivotaltracker.com/story/show/154696777
+Activities Dashboard - Remove Column Filter on LOB not working,"5.5.1, release notes, reproduced in dev, validated by developer, verified by qa - pass",bug,"When on Activities Dashboard (take note of # of records (total in Prod = 73304)
+and user right clicks on a filter LOB (filter on C&IB and AMG - note # of records returned  in Prod = 17817)
+and right click on filter (LOB), choose ""Remove LOB Column Filter""
+then total records do not revert to the count prior to applying the filter.
+*ENDSTORY*
+
+**expected result** 
+1. filters removed, 
+2. bread crumbs are gone and the 
+3. total # of records revert to previous #
+
+**actual result**
+1. filter not removed
+2. bread crumbs remain
+3. total number of records has not changed ",https://www.pivotaltracker.com/story/show/154696704
+Wave Management - moving child templates in a wave does not work properly,"5.5.0 bug, 5.5.1, release notes, requestor: pnc, requestor:pnc, validated by developer",bug,"When user has Wave Management permissions
+and Templates are associated with a Wave  - both parent and child/children
+then not always possible to change the order of Templates with inconsistent MD behaviour.
+*ENDSTORY*
+
+**steps to replicate**
+
+issue 1 - adding a parent template to a wave and moving a child template
+1. navigate to Waves>Template Activities
+2. Open Activity Templates for *BAU 18EXE34*
+3. Add parent template *6 - Migration Activities BAU 2017 (Full)*
+4. Click arrows to move a *6 - Migration Activities* child template
+5. Move between *5 - DR BAU 2017* and *7 - Decommission Activities*
+6. Click arrows to move another *6 -  Migration Activities* child template
+
+**Expected Outcome** - option to move anywhere in the wave
+**Actual Outcome** - no option to move anywhere in 7 - Decommission Activities 
+
+7. Click arrows to move another *6 - Migration Activities* child template
+
+**Expected outcome** - able to move the 3rd template
+**Actual outcome** - will swap positions of two of the *6 - Migration Activities* child templates
+
+issue 2 - after adding single child templates to wave, will not move to the position chosen
+1. add a child wave to *BAU 18EXE34*
+2. click arrows to move position of child template
+3. click a spot between 2 child templates (Ex *3 - Permit to Operate BAU 2017 Prod Move* and *3 - Permit to Operate BAU 2017 SA Changes*)
+
+Expected outcome - child template is inserted in spot chosen
+Actual outcome - child template either inserts at the top or bottom of the parent template list (in example *3 - Permit to Operate* templates)
+
+#### See attached GIF
+
+##### *I need all of the 6 - Migration Activity child templates moved above the 7 - Decommission Activities templates in Prod in wave BAU 18EXE34*",https://www.pivotaltracker.com/story/show/154681287
+Guest role permissions issues,"5.5.1, release notes, user permissions, validated by developer",bug,"As Guest user irrespective of my permissions to LOB and Asset
+I should not be able to make updates in MD
+but only view information.
+*ENDSTORY*
+
+Guest with LOB or Asset permissions should have read-only rights (view) for everything.
+
+Issues list:
+
+1) Asset Dashboard (Edit asset right tab), Asset Activity page, Asset Links Dashboard - Guest (with lob permissions) should not be permitted to add links - two pages are failing. 
+
+2) Asset Dashboard - guest with LOB permissions should not be able to edit any asset - all ""pencil"" icons should be disabled
+
+3) Asset Dashboard - guest with LOB permissions should not be able to add any tags
+
+4) Asset Dashboard - guest with LOB permissions should not be able to add/edit/delete any notes
+
+5) Asset Activity page - asset wave block  - guest with LOB permissions should not be able to add/edit/delete any notes
+
+6) Asset Activity page - guest with LOB permissions should not be able to update an activity. 
+
+7) Asset Activity page - guest with LOB permissions should not be able to add note to activity
+ ",https://www.pivotaltracker.com/story/show/154731545
+Poweruser with permissions cannot change t- and dates for activities on asset activities page,"5.5.1, release notes, requestor: pnc, requestor:pnc, user access and security, user permissions, validated by developer, verified by qa - pass",bug,"As Poweruser in MD with proper LOB or Asset permissions 
+when working on Case (execution) wave 
+I cannot edit activity T- or Due Dates.
+*ENDSTORY*
+
+**pre-conditions**
+1. user has unlocked account and access to MD (can use test user in dev **test123** password **D3f@ult**)
+2. user has been assigned Poweruser role with LOB permissions
+3. asset assigned to an execution wave
+4. asset wave Is Case? = Yes
+
+**steps to replicate**
+1. navigate to asset activity page (example being used is asset 547 in Dev)
+2. validate that wave 547 Is Case? = Yes
+3. click on the pencil icon for Dev App Onboarding
+
+**expected outcome** - options to change the activity t- or the due date are available
+**actual outcome** - missing options to change the activity t- or due date
+
+see screenshots",https://www.pivotaltracker.com/story/show/154805272
+User role permissions issues,"5.5.1, release notes, user permissions, validated in dev",bug,"Given: User with LOB or asset permissions is logged in MD
+the User can override Activity RAG but the User should not be able to as this is granted to PowerUsers with permissions and above.
+*ENDSTORY*
+
+*Issues list:*
+
+1) User can change RAG for activity from the Activity Dashboard through editing it
+
+**Actual Result:**
+User can overwrite and change activity RAG status
+
+**Expected Result:** 
+User should not be permitted to override or change RAG status
+ ",https://www.pivotaltracker.com/story/show/154819086
+Asset Dashboard and Asset Activity Page - Poweruser role permissions ,"5.5.1, release notes, user permissions, validated by developer, verified by qa - pass",bug,"Given: Poweruser with LOB or asset permissions
+I cannot switch or unschedule (delete) from wave
+but I am unable to accomplish this.
+*ENDSTORY*
+
+1) Can not switch or delete the wave from asset he is permitted.
+
+**Actual Result:**
+Authorization Error occurs
+
+**Expected Result:** 
+Poweruser with permissions could switch and delete waves from the assets he has permissions to.M",https://www.pivotaltracker.com/story/show/154808628
+Wave - Migration Activities - PowerUser role permissions issues,"5.5.1, release notes, user permissions, validated by developer, verified by qa - pass",bug,"As Poweruser without Permissions to LOB or Asset
+when in Wave Management he/she should have view only rights
+but currently is able to adjust planned start time by advancing it.
+*ENDSTORY*
+
+Given: Poweruser with LOB or asset permissions is logged in MD
+and: Poweruser opens Waves -Migration Activities page
+and: selects any wave
+and: selects any asset (even if no permissions)
+and: clicks Manage Asset Activitiy(s) button
+and: Advances Planned Start Time and clicks Save.
+
+Then: FAIL
+**Actual Result:**
+Changes are performed and saved, planned start time is advanced and updated for all assets with this Migration Plan
+
+**Expected Result:**
+Poweruser has read-only(view) permissions to MP templates and MP wave management. As ",https://www.pivotaltracker.com/story/show/154843256
+Migration Summary report  - slow performance,"5.5.1, migration summary, release notes, requestor:pnc",bug,"When user has access to MD
+and user runs Migration Summary report
+it takes long to load in Chrome and even longer in IE.
+*ENDSTORY*
+
+**steps to replicate**
+1. Navigate to Reports>Migration Summary Report
+
+**Expected outcome** - Migration Summary Report loads as expected in a reasonable amount of time
+**Actual outcome in IE** -  takes long to load *Prod* is about 40 seconds or more. Sometimes get a message that a script is running long *Dev* is about 60 seconds
+**Actual outcome in Chrome**
+*Prod*
+1. throws error
+Server Error in '/' Application.
+The resource cannot be found.
+Description: HTTP 404. The resource you are looking for (or one of its dependencies) could have been removed, had its name changed, or is temporarily unavailable.  Please review the following URL and make sure that it is spelled correctly. 
+
+Requested URL: /
+2. then loads report
+*Dev*
+1.Throws error above
+2. does not load
+
+The GIF below is from Dev. Double click to watch",https://www.pivotaltracker.com/story/show/154691851

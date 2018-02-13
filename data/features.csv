@@ -1,0 +1,269 @@
+Title,Labels,Type,Description,URL
+Contacts - Download Contact template to use for Import,"5.5.1, contacts, data transformations, release notes, requestor: roadmap, validated by developer",feature,"'As MD Admin, SuperAdmin, User and PowerUser
+I want to be able to download Contacts Template from MD
+as CSV file along with description how to populate it.
+*ENDSTORY*
+
+How to Invoke
+Next to Manage ->Data
+Data (when you hover over it reads Data Transformation)
+-> Download Contacts Template
+
+Contacts Template is CSV file as follows:
+•	Template fields:
+•	FirstName - (M) – VarChar64
+•	Middle Name - (O) – VarChar50
+•	LastName - (M) – VarChar64
+A contact with the same Name cannot exist more than once with the same Email Address
+•	Email - (M) – VarChar256
+Email address must be unique
+•	Phone - (O) – VarChar64
+•	Address 1 – (O) VarChar1024
+•	Address 2 – (O) - VarChar1024
+•	City – (O) - VarChar128
+•	State - VarChar128
+•	Zip Code – VarChar40
+•	Country – (O) – VarChar (128)
+•	Phone (O) – VarChar (64)
+•	Description (description) - VarChar 1024
+•	Position - (O) - VarChar100
+•	Manager – (O) - VarChar254
+MD does not validate if Manager exists as a Contact
+•	Department – (O) - (O) – VarChar64
+•	Employer - (O) - VarChar100
+•	EmployerAddressOne (O) - VarChar1024
+•	EmployerAddressTwo (O) - VarChar1024
+•	EmployerCity (O) - VarChar100
+•	EmployerZipCode (O) – VarChar40
+•	EmployerPhone (O) – VarChar64
+•	EmployerEmail (O) – VarChar256
+•	Team
+list of teams, semi-colon delimited, will be validated against MD and if not will provide the option to insert
+•	Active – Y/N
+if black MD will assume Yes
+
+The File is a zip file containing two files:
+1.	Contacts template in CSV file format –this will be blank but MD will be using this tab to load the data
+2.	Sample as  excell file– this file will have Field Name, Field Type, Description and one or two sample records
+
+AC:
+User can download Contacts Template and Sample
+",https://www.pivotaltracker.com/story/show/154539157
+Contacts - Export,"5.5.1, data transformations, release notes, requestor:power user, validated by developer, verified by qa - pass",feature,"
+As MD User (Admin, SuperAdmin, User and PowerUser)
+I want to be able to Export Contacts from MD
+Into the CSV Contact Template.
+*ENDSTORY*
+
+AC
+Manage – Contacts
+MD shows Export button
+Contacts are exported in the standard format CSV as specified the Blocker ticket",https://www.pivotaltracker.com/story/show/154545110
+Asset Activity page Guest user permissions - it should not be permitted for guest to add/edit/delete the contact,"5.5.1, release notes, user permissions, validated by developer, verified by qa - pass",feature,"As Guest user irrespective of my permissions to LOB and Asset
+I should not be able to make updates in MD
+but only view information.
+*ENDSTORY*
+
+
+Given: Guest user is logged to MD
+and: Asset activity page is opened for asset witch guest has permissions to
+and: guest add\edit\delete the contact on asset-activity page
+
+Then: FAIL: this should be disabled for the Guest user",https://www.pivotaltracker.com/story/show/154847776
+MP import: option to N/A status when importing Activities without sub-activities,"5.5.1, mp import, release notes, requestor:pnc, validated with developer, verified by qa - pass",feature,"As a user
+when I import a Migration Plan on the asset activity page
+and an Activity does not have any sub-activities in the excel cutover plan
+and an Activity does not have %C
+and the Activity's RAG has not been previously overridden
+I want the option to have MD mark the Activity as NA
+*ENDSTORY*
+_____________________________________________________________________
+Preconditions
+1. the user has access to upload and edit Migration Plans
+2. asset is assigned to a wave with a MP template applied
+3. the user has a completed Excel cutover plan with Activities that do not have any sub-activities and are marked NA in the plan
+
+**TC1**
+1. navigate to the asset activity page
+2. click Import MP Sub-activities
+3. choose file click import
+4. count the number of Activities with no sub-activities
+5. provide a message to the user with the option for MD to override the Activity's RAG's to NA upon import
+6. if user chooses yes, MD overrides the Activity RAG's to NA (grey)
+7. Activity is NA on Harvey Ball, Delivery Dashboard and asset activity page
+
+**TC2**
+If Any Activity has progress (5C) or already overridden RAG it will be excluded.
+
+**TC3**
+Message
+There are x Activities without any subactivities, %C or overridden RAG. Do you want MD to override them? Y/N""
+
+**TC4**
+Asset Specific MP Activities are excluded from this logic.",https://www.pivotaltracker.com/story/show/151371307
+????? Test View for Asset/Dynamic Search MISSING RESULTS,"5.5.1, release notes",feature,"Test Asset Retrieval performance with the dynamic search view and gather statistics for 100,000records, 50 dynamic attributes and 20concurrent users.
+*ENDSTORY*",https://www.pivotaltracker.com/story/show/154665754
+Asset Icon,"5.5.1, dynamic assets, release notes, validated by developer, verified by qa - pass",feature,"As MD SuperAdmin
+i want to be able to chose an icon
+from a list of icons
+which to represent a Type of Asset
+and see it in every part of MD
+where asset icon is displayed.
+Asset requires an icon
+(icon is mandatory).
+*ENDSTORY*
+
+AC
+User add icon from a list
+User cannot save asset without icon
+Selected icon displays on (list may be incomplete):
+
+2) Activities Dashboard
+3) Asset-Activity page
+4) Asset Links page
+(3 places for icons to display)
+5) Asset dashboard
+a) links column
+b) edit right pane
+6) Links Dashboard
+a) Asset details
+b) Edit Asset Links modal table
+c) Edit Asset Links modal drop-down list
+7) Execution Dashboard
+8) Waves - Template activities
+(3 places for icons to display)
+9) Waves - Migration Activities
+10) Templates - Activity Templates
+11) Templates - Migration Plan",https://www.pivotaltracker.com/story/show/154280623
+5. Wave Management - Timeline Specific Activities,"5.5.1, release notes, timeline activities, validated by developer, verified by qa - pass",feature,"When on Timeline Activity Page
+an authorized user (ADMIN and SUPERADMIN) should be able to add Timeline (phase or wave) Specific Activities  with the same attributes as on the Asset Activity Page
+and they need to show below the Templete(s)
+as Timeline Specific Activities.
+*ENDSTORY*
+
+AC
+Add Timeline Specific Activities with their own set of attributes as shown on Add Activity modal.
+
+Design Ideas:
+Calculate dates strictly by Tminus and override dates strictly by Tminus in the same way that we do for regular templates.",https://www.pivotaltracker.com/story/show/152097649
+Concurrent Add,"5.5.1, concurrency handling, release notes",feature,"As MD User
+When I have permissions to Edit
+I want to be notified when a record I am in the process of adding
+has been added by another user.
+*ENDSTORY*
+
+Message 2 (M2): concurrently adding same record
+“The record (specify the type)  with this name already exists. The add operation was cancelled. Please Refresh to see the most recent data.”
+
+
+TC1- Template Management – Regular Templates
+M2: Concurrent Add of Regular Template with the same name
+M2: Concurrent Add of Regular Template Activity
+
+
+TC2- Template Management – MP Templates
+M2: Concurrent Add of MP Template with the same name
+M2: Concurrent Add of MP Template Activity
+
+
+TC3- Template Management – Timeline Templates
+M2: Concurrent Add of TM Template Activity
+
+TC4- Wave Management – Regular Wave
+M2 Regular Waves - Concurrent add of Same Phase
+M2 Regular Waves - Concurrent Add of Phase’s Contact (same name and role)
+M2 Regular Waves - Concurrent add of Same Wave
+
+
+TC5- Wave Management – MP
+M2 Regular Waves - Concurrent add of same MP Template to Wave
+
+TC6- Asset Dashboard
+M2: Add Asset with same Asset Code
+M2: Manage Phase modal - Add Asset to same Phase
+M2: Manage Wave modal - Add Asset to same Phase/Wave (irrespective of Active/Inactive)
+M2: Edit Asset Component modal - Add same Asset Component
+M2: Edit Asset Link modal – Add same link (Asset and Link Type)
+
+TC7- Asset Activity Page
+M2: Asset Link– Add same link (Asset and Link Type)
+M2 Contacts - Concurrent Add of Asset’s Contact (same name and role)
+M2 Asset Key Information - Concurrent add same Location
+M2 Asset Key Information - Concurrent add same LOB
+M2 Asset Key Information - Concurrent add same Complexity
+M2: Asset Wave - Add same Asset Component
+
+",https://www.pivotaltracker.com/story/show/154339644
+Concurrent Update,"5.5.1, concurrency handling, release notes, requestor:power user",feature,"As MD User
+when I have permissions to Edit
+I want to be notified when a record I am in the process of updating
+has been modified by another user
+so that I know my changes will be lost
+and I have the option to see the latest record
+before I reapply my changes again.
+*ENDSTORY*
+
+Message 1 (M1): concurrent record update
+“The record you attempted to edit has been updated by another user after you got the original value. Your changes were not saved. Please review the current information and if you want to proceed with your changes reapply them and submit again.”
+
+
+As MD Admin
+I want MD to store all instances of concurrent records updates
+Including the part of MD when concurrency occurred (e.g Wave Management, Template Maintenance, Asset Activity, Template Activity, etc) and when it happened so that future decisions can be made on the concurrency handling method.
+
+Test Cases
+TC1- Template Management – Regular Templates
+M1: Concurrent Update of Regular Template
+M1: Concurrent Update of Parent Template (for Delivery Method)
+M1: Concurrent Update of Child Template (for Delivery Method)
+M1: Concurrent Update of Regular Template Activity
+
+
+TC2- Template Management – MP Templates
+M1: Concurrent Update of MP Template
+M1: Concurrent Update of MP Template Activity
+
+
+TC3- Template Management – Timeline Templates
+M1: Concurrent Update of TM Template
+M2: Concurrent Add of TM Template with the same name
+M3: Concurrent Delete of the same Template
+M1: Concurrent Update of TM Template Activity
+M2: Concurrent Add of TM Template Activity
+M3: Concurrent Delete of TM Template Activity
+
+TC4- Wave Management – Regular Wave
+M1: Regular Waves - Concurrent update of Phase
+M1 Regular Waves - Concurrent update of Phase’s Note
+M1 Regular Waves - Concurrent update of Wave
+
+
+TC5- Wave Management – MP
+M1 Regular Waves - Concurrent add of different MP Template to Wave
+M1 Regular Waves - Concurrent update of Wave to update the associate MP Template
+
+TC6- Asset Dashboard
+M1: Manage Wave modal - Edit Asset-Wave (DM, Active/Inactive)
+M1: Manage Wave modal – switch same Asset-Wave to a different Wave
+M1: Edit Asset – check dynamic – adding and removing the same value on attribute linked to LOV
+
+
+TC7- Asset Activity Page
+M1 Asset - Concurrent update of Asset’s Note
+M1 Asset Key Information - Concurrent update of Name, Complexity, LOB, Location
+M1 Asset Wave – Concurrent Edit Asset-Wave RAG
+M1 Asset Wave – Concurrent Edit of Complexity Factor
+M1 Asset Wave – Concurrent Edit of CASE (Y/N)
+M1 Asset Wave – Concurrent Target Date Override
+M1 Asset Wave Activity – Concurrent Edit of same Asset Activity
+M1 Asset Wave Activity – Concurrent Override of RAG on the same Asset Activity
+M1 Asset Wave Activity – Concurrent removal of Overridden checkbox of RAG on the same Asset Activity
+
+TC8- Asset Dashboard
+M1 Asset Wave Activity – Concurrent Edit of same Asset Activity in single Edit Mode
+M1 Asset Wave Activity – Concurrent Edit of same Asset Activity in multi Edit Mode
+
+TC9- Delivery Dashboard
+M1 Asset Wave Activity – Concurrent Edit of same Asset Activity without Sub-Activity
+M1 Asset Wave Activity – Concurrent Edit of same Asset Activity with Sub-Activity
+M1 Asset Wave Activity – Concurrent Edit of same Sub-Asset",https://www.pivotaltracker.com/story/show/154339746

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Release Notes Automated</title>
+ 
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/dataTables.bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="datatables.min.css"/>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script type="text/javascript" src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script type="text/javascript" src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+     <h1>Release Notes 5.5.1</h1>
+
+    <div class="container-fluid">
+      <h2>Features</h2>
+        <div id='features'></div>
+
+      <h2>Fixed Issues</h2>
+        <div id='bugs'></div> 
+    </div> <!-- /.container -->
+
+
+    <footer class='footer'>
+      <div class='container-fluid'>
+
+      </div>
+
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.csv.min.js"></script>
+    <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/dataTables.bootstrap.js"></script>
+    <script type="text/javascript" src="js/csv_to_html_table.js"></script>
+    <script type="text/javascript" src="datatables.min.js"></script>
+    <!-- ================================================== -->
+
+    <script type="text/javascript">
+
+    //<!-- TABLES
+      
+    // Features
+      CsvToHtmlTable.init({           
+        csv_path: 'data/features.csv',
+        element: 'features', 
+        allow_download: false,
+        csv_options: {separator: ',', delimiter: '"'},
+        datatables_options: {
+          "paging": false,
+          "info": false,
+          "ordering": false,
+          "colReorder": { order: [0, 3, 1, 2, 4] },
+          "dom": 'Bfrtip',
+          "buttons": ['pdfHtml5'],
+          "columnDefs": [
+            { 
+              "title": "Requester",
+              "targets": 1              // label ==> Requester
+            },
+            {                         
+              "targets": [0],          // title
+              "width": "45%"
+            },
+            { 
+              "targets": [3],        // description
+              "width": "48%"
+            },
+            { 
+              "targets": [1, 2, 4], // label, type, url
+              "width": "5%"
+            }                                                            
+          ]
+        },
+        custom_formatting: [[4, format_link], [3, truncate_description], [1, get_requestor]]
+      });
+
+
+    // Fixed Issues
+      CsvToHtmlTable.init({           
+        csv_path: 'data/bugs.csv',
+        element: 'bugs', 
+        allow_download: false,
+        csv_options: {separator: ',', delimiter: '"'},
+        datatables_options: {
+          "paging": false,
+          "info": false,
+          "ordering": false,
+          "colReorder": { order: [0, 3, 1, 2, 4] },
+          "columnDefs": [
+            { 
+              "title": "Requester",
+              "targets": 1              // label ==> Requester
+            },
+            {                         
+              "targets": [0],          // title
+              "width": "45%"
+            },
+            { 
+              "targets": [3],        // description
+              "width": "48%"
+            },
+            { 
+              "targets": [1, 2, 4], // label, type, url
+              "width": "5%"
+            }                                                                    // TODO:order columns, use ColReorder plugin.
+          ]
+        },
+        custom_formatting: [[4, format_link], [3, truncate_description], [1, get_requestor]]
+      });
+     
+    //--> TABLES  
+    </script>
+  </body>
+</html>

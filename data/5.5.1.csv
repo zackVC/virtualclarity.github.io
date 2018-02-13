@@ -1,0 +1,470 @@
+Title,Labels,Type,Description,URL
+MP Progress Dashboard - screen does not scroll all the way and gets stuck when using arrow,"5.5.0 bug, 5.5.1, md, mp progress dashboard, release notes, requestor: pnc, validated by developer",bug,"When on MP Progress Dashboard 
+and select Wave
+and click the heather
+then the screen does not scroll all the way 
+and gets stuck when using arrow.
+*ENDSTORY*
+
+**steps to reproduce**
+1. Navigate to MP Progress dashboard
+2. select a wave and click apply (P5W2 used in example)
+3. click on the header area and arrow down to scroll
+
+**expected outcome** able to scroll up and down the screen
+**actual outcome**
+1. only partially scrolls
+2. screen gets stuck
+3. have to click in the chart area below the headers or use the scroll bar on the right to be able to move again
+
+dev and QA
+https://i.gyazo.com/518e0cbf2d9b913501036f3b4eaf7118.gif
+",https://www.pivotaltracker.com/story/show/154574328
+Contacts - Download Contact template to use for Import,"5.5.1, contacts, data transformations, release notes, requestor: roadmap, validated by developer",feature,"'As MD Admin, SuperAdmin, User and PowerUser
+I want to be able to download Contacts Template from MD
+as CSV file along with description how to populate it.
+*ENDSTORY*
+
+How to Invoke
+Next to Manage ->Data
+Data (when you hover over it reads Data Transformation)
+-> Download Contacts Template
+
+Contacts Template is CSV file as follows:
+•	Template fields:
+•	FirstName - (M) – VarChar64
+•	Middle Name - (O) – VarChar50
+•	LastName - (M) – VarChar64
+A contact with the same Name cannot exist more than once with the same Email Address
+•	Email - (M) – VarChar256
+Email address must be unique
+•	Phone - (O) – VarChar64
+•	Address 1 – (O) VarChar1024
+•	Address 2 – (O) - VarChar1024
+•	City – (O) - VarChar128
+•	State - VarChar128
+•	Zip Code – VarChar40
+•	Country – (O) – VarChar (128)
+•	Phone (O) – VarChar (64)
+•	Description (description) - VarChar 1024
+•	Position - (O) - VarChar100
+•	Manager – (O) - VarChar254
+MD does not validate if Manager exists as a Contact
+•	Department – (O) - (O) – VarChar64
+•	Employer - (O) - VarChar100
+•	EmployerAddressOne (O) - VarChar1024
+•	EmployerAddressTwo (O) - VarChar1024
+•	EmployerCity (O) - VarChar100
+•	EmployerZipCode (O) – VarChar40
+•	EmployerPhone (O) – VarChar64
+•	EmployerEmail (O) – VarChar256
+•	Team
+list of teams, semi-colon delimited, will be validated against MD and if not will provide the option to insert
+•	Active – Y/N
+if black MD will assume Yes
+
+The File is a zip file containing two files:
+1.	Contacts template in CSV file format –this will be blank but MD will be using this tab to load the data
+2.	Sample as  excell file– this file will have Field Name, Field Type, Description and one or two sample records
+
+AC:
+User can download Contacts Template and Sample
+",https://www.pivotaltracker.com/story/show/154539157
+"Activities dashboard - left click on ""wave name"" navigates to an empty Wave dashboard","5.5.1, activity dashboard, release notes, reproduced in dev, requestor:pnc, validated by developer, verified by qa - pass",bug,"When on Activities dashboard
+and hover over a ""wave name"" in Wave column
+(user is presented with message ""Click to go to ""wave name"" dashboard page. Ctrl-and click to open it in a new tab"")
+then MD navigates to Wave Dashboard
+and Wave Dashboard filter populate except for Asset Type filter 
+and there are no results.
+*ENDSTORY* 
+
+**expected outcome** - opens a wave dashboard filtered to that that wave
+**actual outcome** - opens an empty wave dashboard
+
+https://gyazo.com/4b42f40139cac90ec3d92f5f0c869968",https://www.pivotaltracker.com/story/show/154696597
+Activity Dashboard - Multiple assignees overlap,"5.5.1, release notes, validated by developer, verified by qa - pass",bug,"When on Activity Dashboard
+and Activity has multiple Assignees
+the names overlap
+while expected to All show when hoovering over.
+*ENDSTORY*
+
+AC
+at the RE is limited, make them display open hover over",https://www.pivotaltracker.com/story/show/154696777
+Activities Dashboard - Remove Column Filter on LOB not working,"5.5.1, release notes, reproduced in dev, validated by developer, verified by qa - pass",bug,"When on Activities Dashboard (take note of # of records (total in Prod = 73304)
+and user right clicks on a filter LOB (filter on C&IB and AMG - note # of records returned  in Prod = 17817)
+and right click on filter (LOB), choose ""Remove LOB Column Filter""
+then total records do not revert to the count prior to applying the filter.
+*ENDSTORY*
+
+**expected result** 
+1. filters removed, 
+2. bread crumbs are gone and the 
+3. total # of records revert to previous #
+
+**actual result**
+1. filter not removed
+2. bread crumbs remain
+3. total number of records has not changed ",https://www.pivotaltracker.com/story/show/154696704
+Wave Management - moving child templates in a wave does not work properly,"5.5.0 bug, 5.5.1, release notes, requestor: pnc, requestor:pnc, validated by developer",bug,"When user has Wave Management permissions
+and Templates are associated with a Wave  - both parent and child/children
+then not always possible to change the order of Templates with inconsistent MD behaviour.
+*ENDSTORY*
+
+**steps to replicate**
+
+issue 1 - adding a parent template to a wave and moving a child template
+1. navigate to Waves>Template Activities
+2. Open Activity Templates for *BAU 18EXE34*
+3. Add parent template *6 - Migration Activities BAU 2017 (Full)*
+4. Click arrows to move a *6 - Migration Activities* child template
+5. Move between *5 - DR BAU 2017* and *7 - Decommission Activities*
+6. Click arrows to move another *6 -  Migration Activities* child template
+
+**Expected Outcome** - option to move anywhere in the wave
+**Actual Outcome** - no option to move anywhere in 7 - Decommission Activities 
+
+7. Click arrows to move another *6 - Migration Activities* child template
+
+**Expected outcome** - able to move the 3rd template
+**Actual outcome** - will swap positions of two of the *6 - Migration Activities* child templates
+
+issue 2 - after adding single child templates to wave, will not move to the position chosen
+1. add a child wave to *BAU 18EXE34*
+2. click arrows to move position of child template
+3. click a spot between 2 child templates (Ex *3 - Permit to Operate BAU 2017 Prod Move* and *3 - Permit to Operate BAU 2017 SA Changes*)
+
+Expected outcome - child template is inserted in spot chosen
+Actual outcome - child template either inserts at the top or bottom of the parent template list (in example *3 - Permit to Operate* templates)
+
+#### See attached GIF
+
+##### *I need all of the 6 - Migration Activity child templates moved above the 7 - Decommission Activities templates in Prod in wave BAU 18EXE34*",https://www.pivotaltracker.com/story/show/154681287
+Contacts - Export,"5.5.1, data transformations, release notes, requestor:power user, validated by developer, verified by qa - pass",feature,"
+As MD User (Admin, SuperAdmin, User and PowerUser)
+I want to be able to Export Contacts from MD
+Into the CSV Contact Template.
+*ENDSTORY*
+
+AC
+Manage – Contacts
+MD shows Export button
+Contacts are exported in the standard format CSV as specified the Blocker ticket",https://www.pivotaltracker.com/story/show/154545110
+Guest role permissions issues,"5.5.1, release notes, user permissions, validated by developer",bug,"As Guest user irrespective of my permissions to LOB and Asset
+I should not be able to make updates in MD
+but only view information.
+*ENDSTORY*
+
+Guest with LOB or Asset permissions should have read-only rights (view) for everything.
+
+Issues list:
+
+1) Asset Dashboard (Edit asset right tab), Asset Activity page, Asset Links Dashboard - Guest (with lob permissions) should not be permitted to add links - two pages are failing. 
+
+2) Asset Dashboard - guest with LOB permissions should not be able to edit any asset - all ""pencil"" icons should be disabled
+
+3) Asset Dashboard - guest with LOB permissions should not be able to add any tags
+
+4) Asset Dashboard - guest with LOB permissions should not be able to add/edit/delete any notes
+
+5) Asset Activity page - asset wave block  - guest with LOB permissions should not be able to add/edit/delete any notes
+
+6) Asset Activity page - guest with LOB permissions should not be able to update an activity. 
+
+7) Asset Activity page - guest with LOB permissions should not be able to add note to activity
+ ",https://www.pivotaltracker.com/story/show/154731545
+Asset Activity page Guest user permissions - it should not be permitted for guest to add/edit/delete the contact,"5.5.1, release notes, user permissions, validated by developer, verified by qa - pass",feature,"As Guest user irrespective of my permissions to LOB and Asset
+I should not be able to make updates in MD
+but only view information.
+*ENDSTORY*
+
+
+Given: Guest user is logged to MD
+and: Asset activity page is opened for asset witch guest has permissions to
+and: guest add\edit\delete the contact on asset-activity page
+
+Then: FAIL: this should be disabled for the Guest user",https://www.pivotaltracker.com/story/show/154847776
+MP import: option to N/A status when importing Activities without sub-activities,"5.5.1, mp import, release notes, requestor:pnc, validated with developer, verified by qa - pass",feature,"As a user
+when I import a Migration Plan on the asset activity page
+and an Activity does not have any sub-activities in the excel cutover plan
+and an Activity does not have %C
+and the Activity's RAG has not been previously overridden
+I want the option to have MD mark the Activity as NA
+*ENDSTORY*
+_____________________________________________________________________
+Preconditions
+1. the user has access to upload and edit Migration Plans
+2. asset is assigned to a wave with a MP template applied
+3. the user has a completed Excel cutover plan with Activities that do not have any sub-activities and are marked NA in the plan
+
+**TC1**
+1. navigate to the asset activity page
+2. click Import MP Sub-activities
+3. choose file click import
+4. count the number of Activities with no sub-activities
+5. provide a message to the user with the option for MD to override the Activity's RAG's to NA upon import
+6. if user chooses yes, MD overrides the Activity RAG's to NA (grey)
+7. Activity is NA on Harvey Ball, Delivery Dashboard and asset activity page
+
+**TC2**
+If Any Activity has progress (5C) or already overridden RAG it will be excluded.
+
+**TC3**
+Message
+There are x Activities without any subactivities, %C or overridden RAG. Do you want MD to override them? Y/N""
+
+**TC4**
+Asset Specific MP Activities are excluded from this logic.",https://www.pivotaltracker.com/story/show/151371307
+Poweruser with permissions cannot change t- and dates for activities on asset activities page,"5.5.1, release notes, requestor: pnc, requestor:pnc, user access and security, user permissions, validated by developer, verified by qa - pass",bug,"As Poweruser in MD with proper LOB or Asset permissions 
+when working on Case (execution) wave 
+I cannot edit activity T- or Due Dates.
+*ENDSTORY*
+
+**pre-conditions**
+1. user has unlocked account and access to MD (can use test user in dev **test123** password **D3f@ult**)
+2. user has been assigned Poweruser role with LOB permissions
+3. asset assigned to an execution wave
+4. asset wave Is Case? = Yes
+
+**steps to replicate**
+1. navigate to asset activity page (example being used is asset 547 in Dev)
+2. validate that wave 547 Is Case? = Yes
+3. click on the pencil icon for Dev App Onboarding
+
+**expected outcome** - options to change the activity t- or the due date are available
+**actual outcome** - missing options to change the activity t- or due date
+
+see screenshots",https://www.pivotaltracker.com/story/show/154805272
+User role permissions issues,"5.5.1, release notes, user permissions, validated in dev",bug,"Given: User with LOB or asset permissions is logged in MD
+the User can override Activity RAG but the User should not be able to as this is granted to PowerUsers with permissions and above.
+*ENDSTORY*
+
+*Issues list:*
+
+1) User can change RAG for activity from the Activity Dashboard through editing it
+
+**Actual Result:**
+User can overwrite and change activity RAG status
+
+**Expected Result:** 
+User should not be permitted to override or change RAG status
+ ",https://www.pivotaltracker.com/story/show/154819086
+????? Test View for Asset/Dynamic Search MISSING RESULTS,"5.5.1, release notes",feature,"Test Asset Retrieval performance with the dynamic search view and gather statistics for 100,000records, 50 dynamic attributes and 20concurrent users.
+*ENDSTORY*",https://www.pivotaltracker.com/story/show/154665754
+Asset Dashboard and Asset Activity Page - Poweruser role permissions ,"5.5.1, release notes, user permissions, validated by developer, verified by qa - pass",bug,"Given: Poweruser with LOB or asset permissions
+I cannot switch or unschedule (delete) from wave
+but I am unable to accomplish this.
+*ENDSTORY*
+
+1) Can not switch or delete the wave from asset he is permitted.
+
+**Actual Result:**
+Authorization Error occurs
+
+**Expected Result:** 
+Poweruser with permissions could switch and delete waves from the assets he has permissions to.M",https://www.pivotaltracker.com/story/show/154808628
+Asset Icon,"5.5.1, dynamic assets, release notes, validated by developer, verified by qa - pass",feature,"As MD SuperAdmin
+i want to be able to chose an icon
+from a list of icons
+which to represent a Type of Asset
+and see it in every part of MD
+where asset icon is displayed.
+Asset requires an icon
+(icon is mandatory).
+*ENDSTORY*
+
+AC
+User add icon from a list
+User cannot save asset without icon
+Selected icon displays on (list may be incomplete):
+
+2) Activities Dashboard
+3) Asset-Activity page
+4) Asset Links page
+(3 places for icons to display)
+5) Asset dashboard
+a) links column
+b) edit right pane
+6) Links Dashboard
+a) Asset details
+b) Edit Asset Links modal table
+c) Edit Asset Links modal drop-down list
+7) Execution Dashboard
+8) Waves - Template activities
+(3 places for icons to display)
+9) Waves - Migration Activities
+10) Templates - Activity Templates
+11) Templates - Migration Plan",https://www.pivotaltracker.com/story/show/154280623
+Wave - Migration Activities - PowerUser role permissions issues,"5.5.1, release notes, user permissions, validated by developer, verified by qa - pass",bug,"As Poweruser without Permissions to LOB or Asset
+when in Wave Management he/she should have view only rights
+but currently is able to adjust planned start time by advancing it.
+*ENDSTORY*
+
+Given: Poweruser with LOB or asset permissions is logged in MD
+and: Poweruser opens Waves -Migration Activities page
+and: selects any wave
+and: selects any asset (even if no permissions)
+and: clicks Manage Asset Activitiy(s) button
+and: Advances Planned Start Time and clicks Save.
+
+Then: FAIL
+**Actual Result:**
+Changes are performed and saved, planned start time is advanced and updated for all assets with this Migration Plan
+
+**Expected Result:**
+Poweruser has read-only(view) permissions to MP templates and MP wave management. As ",https://www.pivotaltracker.com/story/show/154843256
+5. Wave Management - Timeline Specific Activities,"5.5.1, release notes, timeline activities, validated by developer, verified by qa - pass",feature,"When on Timeline Activity Page
+an authorized user (ADMIN and SUPERADMIN) should be able to add Timeline (phase or wave) Specific Activities  with the same attributes as on the Asset Activity Page
+and they need to show below the Templete(s)
+as Timeline Specific Activities.
+*ENDSTORY*
+
+AC
+Add Timeline Specific Activities with their own set of attributes as shown on Add Activity modal.
+
+Design Ideas:
+Calculate dates strictly by Tminus and override dates strictly by Tminus in the same way that we do for regular templates.",https://www.pivotaltracker.com/story/show/152097649
+Concurrent Add,"5.5.1, concurrency handling, release notes",feature,"As MD User
+When I have permissions to Edit
+I want to be notified when a record I am in the process of adding
+has been added by another user.
+*ENDSTORY*
+
+Message 2 (M2): concurrently adding same record
+“The record (specify the type)  with this name already exists. The add operation was cancelled. Please Refresh to see the most recent data.”
+
+
+TC1- Template Management – Regular Templates
+M2: Concurrent Add of Regular Template with the same name
+M2: Concurrent Add of Regular Template Activity
+
+
+TC2- Template Management – MP Templates
+M2: Concurrent Add of MP Template with the same name
+M2: Concurrent Add of MP Template Activity
+
+
+TC3- Template Management – Timeline Templates
+M2: Concurrent Add of TM Template Activity
+
+TC4- Wave Management – Regular Wave
+M2 Regular Waves - Concurrent add of Same Phase
+M2 Regular Waves - Concurrent Add of Phase’s Contact (same name and role)
+M2 Regular Waves - Concurrent add of Same Wave
+
+
+TC5- Wave Management – MP
+M2 Regular Waves - Concurrent add of same MP Template to Wave
+
+TC6- Asset Dashboard
+M2: Add Asset with same Asset Code
+M2: Manage Phase modal - Add Asset to same Phase
+M2: Manage Wave modal - Add Asset to same Phase/Wave (irrespective of Active/Inactive)
+M2: Edit Asset Component modal - Add same Asset Component
+M2: Edit Asset Link modal – Add same link (Asset and Link Type)
+
+TC7- Asset Activity Page
+M2: Asset Link– Add same link (Asset and Link Type)
+M2 Contacts - Concurrent Add of Asset’s Contact (same name and role)
+M2 Asset Key Information - Concurrent add same Location
+M2 Asset Key Information - Concurrent add same LOB
+M2 Asset Key Information - Concurrent add same Complexity
+M2: Asset Wave - Add same Asset Component
+
+",https://www.pivotaltracker.com/story/show/154339644
+Migration Summary report  - slow performance,"5.5.1, migration summary, release notes, requestor:pnc",bug,"When user has access to MD
+and user runs Migration Summary report
+it takes long to load in Chrome and even longer in IE.
+*ENDSTORY*
+
+**steps to replicate**
+1. Navigate to Reports>Migration Summary Report
+
+**Expected outcome** - Migration Summary Report loads as expected in a reasonable amount of time
+**Actual outcome in IE** -  takes long to load *Prod* is about 40 seconds or more. Sometimes get a message that a script is running long *Dev* is about 60 seconds
+**Actual outcome in Chrome**
+*Prod*
+1. throws error
+Server Error in '/' Application.
+The resource cannot be found.
+Description: HTTP 404. The resource you are looking for (or one of its dependencies) could have been removed, had its name changed, or is temporarily unavailable.  Please review the following URL and make sure that it is spelled correctly. 
+
+Requested URL: /
+2. then loads report
+*Dev*
+1.Throws error above
+2. does not load
+
+The GIF below is from Dev. Double click to watch",https://www.pivotaltracker.com/story/show/154691851
+Concurrent Update,"5.5.1, concurrency handling, release notes, requestor:power user",feature,"As MD User
+when I have permissions to Edit
+I want to be notified when a record I am in the process of updating
+has been modified by another user
+so that I know my changes will be lost
+and I have the option to see the latest record
+before I reapply my changes again.
+*ENDSTORY*
+
+Message 1 (M1): concurrent record update
+“The record you attempted to edit has been updated by another user after you got the original value. Your changes were not saved. Please review the current information and if you want to proceed with your changes reapply them and submit again.”
+
+
+As MD Admin
+I want MD to store all instances of concurrent records updates
+Including the part of MD when concurrency occurred (e.g Wave Management, Template Maintenance, Asset Activity, Template Activity, etc) and when it happened so that future decisions can be made on the concurrency handling method.
+
+Test Cases
+TC1- Template Management – Regular Templates
+M1: Concurrent Update of Regular Template
+M1: Concurrent Update of Parent Template (for Delivery Method)
+M1: Concurrent Update of Child Template (for Delivery Method)
+M1: Concurrent Update of Regular Template Activity
+
+
+TC2- Template Management – MP Templates
+M1: Concurrent Update of MP Template
+M1: Concurrent Update of MP Template Activity
+
+
+TC3- Template Management – Timeline Templates
+M1: Concurrent Update of TM Template
+M2: Concurrent Add of TM Template with the same name
+M3: Concurrent Delete of the same Template
+M1: Concurrent Update of TM Template Activity
+M2: Concurrent Add of TM Template Activity
+M3: Concurrent Delete of TM Template Activity
+
+TC4- Wave Management – Regular Wave
+M1: Regular Waves - Concurrent update of Phase
+M1 Regular Waves - Concurrent update of Phase’s Note
+M1 Regular Waves - Concurrent update of Wave
+
+
+TC5- Wave Management – MP
+M1 Regular Waves - Concurrent add of different MP Template to Wave
+M1 Regular Waves - Concurrent update of Wave to update the associate MP Template
+
+TC6- Asset Dashboard
+M1: Manage Wave modal - Edit Asset-Wave (DM, Active/Inactive)
+M1: Manage Wave modal – switch same Asset-Wave to a different Wave
+M1: Edit Asset – check dynamic – adding and removing the same value on attribute linked to LOV
+
+
+TC7- Asset Activity Page
+M1 Asset - Concurrent update of Asset’s Note
+M1 Asset Key Information - Concurrent update of Name, Complexity, LOB, Location
+M1 Asset Wave – Concurrent Edit Asset-Wave RAG
+M1 Asset Wave – Concurrent Edit of Complexity Factor
+M1 Asset Wave – Concurrent Edit of CASE (Y/N)
+M1 Asset Wave – Concurrent Target Date Override
+M1 Asset Wave Activity – Concurrent Edit of same Asset Activity
+M1 Asset Wave Activity – Concurrent Override of RAG on the same Asset Activity
+M1 Asset Wave Activity – Concurrent removal of Overridden checkbox of RAG on the same Asset Activity
+
+TC8- Asset Dashboard
+M1 Asset Wave Activity – Concurrent Edit of same Asset Activity in single Edit Mode
+M1 Asset Wave Activity – Concurrent Edit of same Asset Activity in multi Edit Mode
+
+TC9- Delivery Dashboard
+M1 Asset Wave Activity – Concurrent Edit of same Asset Activity without Sub-Activity
+M1 Asset Wave Activity – Concurrent Edit of same Asset Activity with Sub-Activity
+M1 Asset Wave Activity – Concurrent Edit of same Sub-Asset",https://www.pivotaltracker.com/story/show/154339746
